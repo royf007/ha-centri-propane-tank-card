@@ -1,0 +1,13 @@
+type: custom:mod-card
+card:
+  type: vertical-stack
+  cards:
+    - type: custom:ha-centri-propane-tank-card
+      entity: sensor.centri_tank_level
+      tank_size: 500
+    - type: entities
+      entities:
+        - entity: sensor.propane_tank_last_updated_est
+          name: Propane Tank Level Last Updated
+        - entity: sensor.propane_tank_next_update_est
+          name: Propane Tank Level Next Update

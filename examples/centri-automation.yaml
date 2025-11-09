@@ -1,0 +1,15 @@
+# Automation to update Centri Tank Level sensor on Home Assistant start
+# Add this to your automations.yaml or create it via the UI
+
+alias: "Update Centri Tank Level on Startup"
+description: "Updates the Centri propane tank sensor when Home Assistant starts"
+trigger:
+  - platform: homeassistant
+    event: start
+action:
+  - delay:
+      seconds: 30  # Wait 30 seconds for Home Assistant to fully initialize
+  - service: homeassistant.update_entity
+    target:
+      entity_id: sensor.centri_tank_level
+mode: single

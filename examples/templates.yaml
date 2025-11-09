@@ -1,0 +1,38 @@
+# Centri Propane Tank
+
+- sensor:
+    - name: "Propane Tank Last Updated EST"
+      state: >
+        {% set utc_time = states.sensor.centri_tank_level.attributes['LastPostTimeIso'] %}
+        {% if utc_time %}
+          {% set time = utc_time.split('.')[0] %}
+          {% set est_time = now().strptime(time, '%Y-%m-%d %H:%M:%S') - timedelta(hours=4) %}
+          {{ est_time.strftime('%Y-%m-%d %H:%M') }}
+        {% else %}
+          Unknown
+        {% endif %}
+      icon: mdi:clock
+
+    - name: "Propane Tank Next Update EST"
+      state: >
+        {% set utc_time = states.sensor.centri_tank_level.attributes['NextPostTimeIso'] %}
+        {% if utc_time %}
+          {% set time = utc_time.split('.')[0] %}
+          {% set est_time = now().strptime(time, '%Y-%m-%d %H:%M:%S') - timedelta(hours=4) %}
+          {{ est_time.strftime('%Y-%m-%d %H:%M') }}
+        {% else %}
+          Unknown
+        {% endif %}
+      icon: mdi:clock
+
+    - name: "Propane Tank Remaining Gallons"
+      unit_of_measurement: "gallons"
+      state: >
+        {% set tank_size = states.sensor.centri_tank_level.attributes['TankSize'] %}
+        {% set tank_level = states('sensor.centri_tank_level') | float(0) %}
+        {% if tank_size and tank_level %}
+          {{ (tank_size | float(0) * tank_level / 100) | int }}
+        {% else %}
+          Unknown
+        {% endif %}
+      icon: mdi:propane-tank

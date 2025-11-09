@@ -1,0 +1,57 @@
+type: custom:mod-card
+style: |
+  ha-card {
+    background-color: #000000;
+    border: 1px solid #000000;
+    border-radius: 12px;
+    animation: pulse-shadow-energy 5s infinite alternate;
+    padding: 0 !important;
+   }
+  :host {
+    --ha-card-padding: 0;
+   }
+  ha-card > :first-child {
+    padding: 0;
+   }
+  card-content {
+    padding: 0;
+   }
+  @keyframes pulse-shadow-energy {
+     0% {
+       box-shadow: 0 0 0.0625rem 0.0625rem #FF00E0;
+     }
+     50% {
+       box-shadow: 0 0 0.0625rem 0.09375rem #0055FF;
+     }
+     100% {
+       box-shadow: 0 0 0.0625rem 0.125rem #FF8C00;
+     }
+   }
+card:
+  type: vertical-stack
+  cards:
+    - type: custom:ha-centri-propane-tank-card
+      entity: sensor.centri_tank_level
+      tank_size: 500
+      card_mod:
+        style: |
+          ha-card {
+            background-color: #000000 !important;
+          }
+          .tank-container {
+            background-color: transparent !important;
+          }
+    - type: entities
+      entities:
+        - entity: sensor.propane_tank_last_updated_est
+          name: Propane Tank Level Last Updated
+        - entity: sensor.propane_tank_next_update_est
+          name: Propane Tank Level Next Update
+      card_mod:
+        style: |
+          ha-card {
+            background-color: #000000 !important;
+          }
+          .card-content {
+            background-color: transparent !important;
+          }

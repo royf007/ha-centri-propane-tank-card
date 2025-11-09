@@ -1,0 +1,31 @@
+  - platform: rest
+    name: Centri Tank Level
+    unique_id: "centri_tank_level"
+    resource: https://api.centriconnect.com/centriconnect/YOUR_ACCOUNT_ID/device/YOUR_DEVICE_ID/all-data
+    method: GET
+    params:
+      device_auth: "YOUR_API_KEY"
+    scan_interval: 21600 # Updates every 6 hours
+    value_template: "{{ value_json['YOUR_DEVICE_ID']['TankLevel'] }}"
+    unit_of_measurement: "%"
+    state_class: measurement
+    json_attributes_path: "$.YOUR_DEVICE_ID"
+    json_attributes:
+      - AlertStatus
+      - Altitude
+      - BatteryVolts
+      - DeviceID
+      - DeviceName
+      - DeviceTempCelsius
+      - DeviceTempFahrenheit
+      - LastPostTimeIso
+      - Latitude
+      - Longitude
+      - NextPostTimeIso
+      - SignalQualLTE
+      - SolarVolts
+      - TankSize
+      - TankSizeUnit
+      - VersionHW
+      - VersionLTE
+    device_class: battery # Using battery as it's a level measurement

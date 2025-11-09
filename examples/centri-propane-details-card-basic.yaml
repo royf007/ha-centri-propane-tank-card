@@ -1,0 +1,62 @@
+type: custom:mod-card
+card:
+  type: entities
+  title: Propane Tank Details
+  entities:
+    - entity: sensor.centri_tank_level
+      name: Tank Level
+    - entity: sensor.centri_tank_level
+      type: attribute
+      attribute: TankSize
+      name: Tank Size
+      suffix: " gallons"
+    - entity: sensor.propane_tank_remaining_gallons
+      name: Gallons Remaining
+    - entity: sensor.centri_tank_level
+      type: attribute
+      attribute: AlertStatus
+      name: Alert Status
+    - entity: sensor.centri_tank_level
+      type: attribute
+      attribute: BatteryVolts
+      name: Battery Voltage
+      suffix: " V"
+    - entity: sensor.centri_tank_level
+      type: attribute
+      attribute: SolarVolts
+      name: Solar Voltage
+      suffix: " V"
+    - entity: sensor.centri_tank_level
+      type: attribute
+      attribute: SignalQualLTE
+      name: Signal Quality
+    - entity: sensor.centri_tank_level
+      type: attribute
+      attribute: DeviceTempFahrenheit
+      name: Device Temperature
+      suffix: " °F"
+    - entity: sensor.propane_tank_last_updated_est
+      name: Last Updated
+    - entity: sensor.propane_tank_next_update_est
+      name: Next Update
+    - entity: sensor.centri_tank_level
+      type: attribute
+      attribute: Latitude
+      name: Latitude
+    - entity: sensor.centri_tank_level
+      type: attribute
+      attribute: Longitude
+      name: Longitude
+    - entity: sensor.centri_tank_level
+      type: attribute
+      attribute: Altitude
+      name: Altitude
+      suffix: " m"
+    - entity: sensor.centri_tank_level
+      type: attribute
+      attribute: VersionHW
+      name: Hardware Version
+    - entity: sensor.centri_tank_level
+      type: attribute
+      attribute: VersionLTE
+      name: LTE Version
